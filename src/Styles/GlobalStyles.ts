@@ -1,10 +1,18 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+  :Root{
+    --title-size:6vh;
+    --sub-title-size: 3.6vh;
+    --text-size: 2.7vh;
+
+  }
+  
   *{
     padding: 0%;
     margin: 0%;
 
+    border: border-box;
     transition: 0.6s;
   }
 
@@ -24,7 +32,9 @@ export default createGlobalStyle`
 
   button{
     cursor: pointer;
-    background: none;
     border: none;
   }
+
+ 
+
 `
