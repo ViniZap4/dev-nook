@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 //import router
 import AppRouter from '../Router';
@@ -12,9 +12,10 @@ import light from '../Styles/themes/light';
 
 //import utils
 import usePersistedState from '../Util/usePersistedState';
+import themeContext from '../Contexts/themeContext';
 
 const App: React.FC = () => {
-  const [theme, setThime] = usePersistedState<DefaultTheme>('theme', light)
+  const theme = useContext(themeContext)
 
   return (<>
     <ThemeProvider theme={theme}>
