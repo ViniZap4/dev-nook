@@ -10,20 +10,20 @@ import Animations from '../Styles/animations';
 //import themes
 import {ThemeProvider } from 'styled-components';
 
-//import utils
-import usePersistedState from '../Util/usePersistedState';
-
 //import contexts
 import themeContext from '../Contexts/themeContext';
+import UserContextProvider from '../Contexts/userContext';
 
 const App: React.FC = () => {
   const theme = useContext(themeContext)
 
   return (<>
     <ThemeProvider theme={theme}>
-      <Animations />
-      <GlobalStyles />
-      <AppRouter />
+      <UserContextProvider>
+        <Animations />
+        <GlobalStyles />
+        <AppRouter />
+      </UserContextProvider>
     </ThemeProvider>
   </>);
 }
