@@ -39,7 +39,7 @@ export const Container = styled.div`
       align-items: center;
       justify-content: center;
       width: max-content;
-      margin:4.5vh 0vw;
+      margin-top:4.5vh;
       border: 0.3vh solid ${props => props.theme.colors.primary};
       border-radius: 0.7vh;
       background-color: ${props => props.theme.colors.background};
