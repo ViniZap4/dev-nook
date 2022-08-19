@@ -1,5 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import MenuArea from '../../Components/Menu/MenuArea';
 import { TitleTextColor } from '../../Styles/utilStyles/linearTextColor';
 
 //import styles 
@@ -7,12 +8,6 @@ import { Container } from './styles';
 
 
 const Home: React.FC = () => {
-  const navigate = useNavigate()
-
-  function handleLogin(){
-    navigate("/login");
-  }
-
   return (
     <Container>
       <div className="welcome">
@@ -22,10 +17,11 @@ const Home: React.FC = () => {
         <span className="description">
           Maked for Developers!
         </span>
-        <button onClick={handleLogin} className="login">
+        <Link to="/login" className="login">
           <span className='text'>Login</span>
-        </button>
+        </Link>
       </div>
+      <MenuArea/>
     </Container>
   );
 }

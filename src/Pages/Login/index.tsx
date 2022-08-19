@@ -1,4 +1,5 @@
 import React from 'react';
+import MenuArea from '../../Components/Menu/MenuArea';
 import { TitleTextColor } from '../../Styles/utilStyles/linearTextColor';
 import AuthenticationPopup from './AuthenticationPopUp';
 
@@ -21,6 +22,7 @@ const Login: React.FC = () => {
         <span className='text'>Sign-In with GitHub</span>
         </button>
       </div>
+      <MenuArea/>
     </Container>
   );
 }
