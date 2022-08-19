@@ -7,7 +7,7 @@ import { Container } from './styles';
 const MenuBar: React.FC = () => {
   const {authenticated} = useContext(UserContext)
   
-  const icon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABJklEQVRoge2YwQ3CMAxFvyNuLIBEuTAAi7BHDizADCyA2kkYhAlQe+DKAjWXViCoK6W4iYL8joni5qlxYhkwDMNICUkTq+N1T+AKjHVgzIYJ/n7aXd4Ht+fHHnAVIzAeoWnZ+dtheRmaduI65nLC5gGgIEb1OcjkyuDNAwCjcGi/4vWIAgCK4I+92AxtRDVex5hAFphAakwgNfEECM0Pq2tpIppAy85PlKiZyUuTix/2FET3kor3+VQsB1KTvUC0HNCubnui/QHt6rYn5hGyanQIE0jNmMAstYs2ogATPKZJ1GAWaxdtxHegu3fVaxdt/joHsiB7ATEH5uqkaTNyC83TSdNGPkIzddK0yT4HTCA1JpAaWUC/kxa3M6fdSculujUMwwjjCZ+ZYM8fp35lAAAAAElFTkSuQmCC"
+  const icon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABmJLR0QA/wD/AP+gvaeTAAABB0lEQVRoge2YQQ7CIBBFP42XMLYn6j3YeRlXehIP1CbeorigLjQMCXSAYP5bljDwQgcmAxBCSEuMNHCDmw3wAHBJjLkCsFeY5/fH1wyYjHhmddjshPMzNDqI04B7+mIAgBFe/HepzHhuNF48iCiwbySXKbQR3XiemEAXUKA1FGhNRQGzHpi8SAPVBBw2mymxOAxWGjwd2FMS+0sq3ue5MAda071AtRzQrm4/VDsB/erWU/MXYjUaggKtiQkUqV20iQlY5Eksg59bBfEd2O9d9dpFm7/OgS7oXkDMgVKdNG0iJ1Cmk6ZNRKBMJ02b7nOAAq2hQGsiAuqdtLqduQKdtC6qW0IISeMNfPE8kvWEka0AAAAASUVORK5CYII="
 
   return (
     <Container>
@@ -15,15 +15,6 @@ const MenuBar: React.FC = () => {
         <PageBoxItem >
           {[
             {
-              title: 'Dashboard',
-              path: '/dashboard',
-              icon: icon,
-            },
-            {
-              title: 'Dashboard',
-              path: '/dashboard',
-              icon: icon,
-            },{
               title: 'Dashboard',
               path: '/dashboard',
               icon: icon,
