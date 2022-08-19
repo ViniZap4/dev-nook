@@ -1,4 +1,4 @@
-import { createContext, ReactNode} from "react";
+import { createContext, ReactNode, useEffect} from "react";
 
 import usePersistedState from "../Util/usePersistedState";
 
@@ -8,15 +8,12 @@ import { User } from "firebase/auth"; // type used for user from Firebase
 type UserContextType = {
   user: User; setUser: (newState: User) => void;
   authenticated: boolean;
-  loadingUser: boolean, setLoadingUser: (newState: boolean) => void,
 }
 
 // settings initial Values for user contexts
 const InitialValues ={
   user: {} as User, setUser: () => {},
   authenticated: false,
-  loadingUser: false, setLoadingUser: () => {},
-
 }
 
 // Creating User Contexts
@@ -30,15 +27,12 @@ type userProviderProps = {
 
 const UserContextProvider = ({children}: userProviderProps) => {
   const  [ user, setUser] = usePersistedState("user", InitialValues.user);
-  const  [ loadingUser, setLoadingUser] = usePersistedState("user", InitialValues.loadingUser);
-
 
   return(
     <UserContext.Provider 
       value={{
         user, setUser,
         authenticated: !!user,
-        loadingUser, setLoadingUser
       }}
     >
       {children}

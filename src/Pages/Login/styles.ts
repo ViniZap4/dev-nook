@@ -24,7 +24,7 @@ export const Container = styled.div`
       display: flex;
       align-items: center;
       justify-content: center;
-      
+
       border: 0.3vh solid ${props => props.theme.colors.primary};
       border-radius: 0.7vh;
       background-color: ${props => props.theme.colors.background};
@@ -39,7 +39,6 @@ export const Container = styled.div`
 
       &:hover{
         background-color: ${props => props.theme.colors.primary};
-        transform: scale(1.1);
 
         .text{
           color: #fff;
