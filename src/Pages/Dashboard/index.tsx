@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../Contexts/userContext';
 
 // import { Container } from './styles';
 
 const Dashboard: React.FC = () => {
-  return <div />;
+  const {user} = useContext(UserContext)
+  
+  return (
+    <div>
+      {user?.displayName}
+    </div>
+  );
 }
 
 export default Dashboard;
