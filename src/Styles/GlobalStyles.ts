@@ -35,6 +35,4 @@ export default createGlobalStyle`
     border: none;
   }
 
- 
-
 `

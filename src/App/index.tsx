@@ -5,13 +5,15 @@ import AppRouter from '../Router';
 
 //import styles
 import GlobalStyles from '../Styles/GlobalStyles';
+import Animations from '../Styles/animations';
 
 //import themes
-import { DefaultTheme, ThemeProvider } from 'styled-components';
-import light from '../Styles/themes/light';
+import {ThemeProvider } from 'styled-components';
 
 //import utils
 import usePersistedState from '../Util/usePersistedState';
+
+//import contexts
 import themeContext from '../Contexts/themeContext';
 
 const App: React.FC = () => {
@@ -19,6 +21,7 @@ const App: React.FC = () => {
 
   return (<>
     <ThemeProvider theme={theme}>
+      <Animations />
       <GlobalStyles />
       <AppRouter />
     </ThemeProvider>

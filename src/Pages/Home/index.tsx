@@ -1,8 +1,8 @@
 import React from 'react';
-
 import { useNavigate } from 'react-router-dom';
+import { TitleTextColor } from '../../Styles/utilStyles/linearTextColor';
 
-//import
+//import styles 
 import { Container } from './styles';
 
 
@@ -16,9 +16,9 @@ const Home: React.FC = () => {
   return (
     <Container>
       <div className="welcome">
-        <h1 className="title">
+        <TitleTextColor>
           Welcome to Dev Nook!
-        </h1>
+        </TitleTextColor>
         <span className="description">
           Maked for Developers!
         </span>
