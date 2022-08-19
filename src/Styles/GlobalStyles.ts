@@ -29,7 +29,9 @@ export default createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-
+  a{
+    text-decoration: none;
+  }
   button{
     cursor: pointer;
     border: none;
