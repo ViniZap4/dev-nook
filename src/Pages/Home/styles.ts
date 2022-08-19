@@ -18,18 +18,6 @@ export const Container = styled.div`
     margin-left: 6vw;
     border-radius: 3vh;
 
-    .title {
-      font-size: var(--title-size);
-      color: ${props => props.theme.colors.primary};
-      background-image: ${props => props.theme.colors.primaryBackground};
-      background-size: 100%;
-      background-repeat: repeat;
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent; 
-      -moz-background-clip: text;
-      -moz-text-fill-color: transparent;
-    }
     .description{
       color: ${props => props.theme.colors.secondary};
       font-size: var(--sub-title-size);
