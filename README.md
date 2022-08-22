@@ -2,4 +2,4 @@
 
 ## A platform for developer 
 
-I'm making Dev Nook for help dev people, that project will be several apps and articles about development.
+I'm making Dev Nook for help dev people, that project will have several apps and articles about development.
