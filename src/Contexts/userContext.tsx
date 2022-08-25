@@ -32,7 +32,7 @@ const UserContextProvider = ({children}: userProviderProps) => {
     <UserContext.Provider 
       value={{
         user, setUser,
-        authenticated: !!user,
+        authenticated: (!!user || (user === {})),
       }}
     >
       {children}

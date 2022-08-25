@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { Container } from './styles';
 
 interface Page{
-    title: string;
-    path: string;
-    icon: string;
+  title: string;
+  path: string;
+  icon: string;
 }
 
 interface Props{
