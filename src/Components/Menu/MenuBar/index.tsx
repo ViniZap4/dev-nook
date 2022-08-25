@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../../Contexts/userContext';
+import { PageContents } from '../MenuContents';
 import PageBoxItem from '../PageBoxItem';
 
 import { Container } from './styles';
@@ -11,37 +12,11 @@ const MenuBar: React.FC = () => {
 
   return (
     <Container>
-      {authenticated ? <>  
-        <PageBoxItem >
-          {[
-            {
-              title: 'Dashboard',
-              path: '/dashboard',
-              icon: icon,
-            },
-          ]}
+      {
+        <PageBoxItem>
+          {PageContents()}
         </PageBoxItem>
-      </>: 
-      <> 
-       <PageBoxItem>
-          {[
-            {
-              title: 'Home',
-              path: '/',
-              icon: icon,
-            },
-            {
-              title: 'Login',
-              path: '/login',
-              icon: icon,
-            }
-          ]}
-        </PageBoxItem>
-      </>
       }
-     
-      
-
     </Container>
   );
 }
