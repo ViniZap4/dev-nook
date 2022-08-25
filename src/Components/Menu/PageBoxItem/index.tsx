@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 
 import { Container } from './styles';
 
-interface Page{
+export interface Page{
   title: string;
   path: string;
   icon: string;
 }
 
-interface Props{
+export interface Props{
   children: Page[]
 }
 
