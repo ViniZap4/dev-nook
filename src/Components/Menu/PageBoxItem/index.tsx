@@ -9,7 +9,7 @@ export interface Page{
   icon: string;
 }
 
-export interface Props{
+interface Props{
   children: Page[]
 }
 

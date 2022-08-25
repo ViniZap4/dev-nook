@@ -16,7 +16,7 @@ const Login: React.FC = () => {
       <div className="loginBox">
         <TitleTextColor> Sign-In </TitleTextColor>
         <span className="message">
-          For to login in Dev Nook, you need to have a account in GitHub.
+          For to login in Dev Nook, you need to have an account in GitHub.
         </span>
         <button className="buttonLogin" onClick={handleGitHubSignIn}>
         <span className='text'>Sign-In with GitHub</span>
