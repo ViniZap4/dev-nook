@@ -12,11 +12,9 @@ const MenuBar: React.FC = () => {
 
   return (
     <Container>
-      {
-        <PageBoxItem>
+      <PageBoxItem>
           {PageContents()}
         </PageBoxItem>
-      }
     </Container>
   );
 }
