@@ -8,6 +8,7 @@ export default{
     secondary: '#00d9ff',
     
     background: '#121212',
+    backgroundLight: '#3e3e3e',
     text:'#fff',
   },
 }
