@@ -27,23 +27,26 @@ export const Container = styled.div`
 
     .title{
       padding: 0vh;
-      background-color: ${props => props.theme.colors.text};
-      color: ${props => props.theme.colors.background};
+      background: ${props => props.theme.colors.backgroundLight};
+      color: ${props => props.theme.colors.text};
       position: absolute;
       font-size: 0vh;
       bottom: -3.6vh;
-      border-radius: 0.3vw;
+      border-radius: 0.27vw;
+      box-shadow: 0 0 0.9vh #000000c4;
     }
 
     &:hover{
       .iconBox{
         transform: scale(1.2) translateY(0.6vh);
+        box-shadow: 0 0 3vh #000000c4;
       }
     
       .title{
         bottom: -4.5vh;
         padding: 0.45vh;
         font-size: 1.8vh;
+        z-index: 5;
       }
     }
   }
