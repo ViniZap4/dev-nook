@@ -15,7 +15,7 @@ import themeContext from '../Contexts/themeContext';
 import UserContextProvider from '../Contexts/userContext';
 
 const App: React.FC = () => {
-  const theme = useContext(themeContext)
+  const {theme} = useContext(themeContext)
 
   return (<>
     <ThemeProvider theme={theme}>

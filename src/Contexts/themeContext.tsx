@@ -4,8 +4,14 @@ import { DefaultTheme } from "styled-components";
 import dark from "../Styles/themes/dark";
 import light from "../Styles/themes/light";
 
-const themeContext = createContext<DefaultTheme>(dark);
+type themeContextType = {
+  theme: DefaultTheme,
+}
 
+const InitialValues ={
+  theme: dark,
+}
 
+const themeContext = createContext<themeContextType>(InitialValues);
 
 export default themeContext;
