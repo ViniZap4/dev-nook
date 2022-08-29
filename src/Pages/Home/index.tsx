@@ -15,7 +15,7 @@ const Home: React.FC = () => {
           Welcome to Dev Nook!
         </TitleTextColor>
         <span className="description">
-          Maked for Developers!
+          Made for Developers!
         </span>
         <Link to="/login" className="login">
           <span className='text'>Login</span>
