@@ -11,19 +11,6 @@ export const Container = styled.div`
     justify-content: center;
     margin: 0.6vh 0.9vh;
     
-    .iconBox{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #121212;
-      height: 4.5vh;
-      width: 4.5vh;
-      border-radius: 0.3vw;
-      overflow: hidden;
-      .icon{
-        height: 80%;
-      }
-    }
 
     .title{
       padding: 0vh;
@@ -38,7 +25,7 @@ export const Container = styled.div`
 
     &:hover{
       .iconBox{
-        transform: scale(1.2) translateY(0.6vh);
+        transform: translateY(0.6vh) scale(1.2);
         box-shadow: 0 0 3vh #000000c4;
       }
     
@@ -51,3 +38,4 @@ export const Container = styled.div`
     }
   }
 `
+

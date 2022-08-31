@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+// import styled components
 import { Container } from './styles';
+import { IconBox } from '../../../Util/IconBox';
 
 export interface Page{
   title: string;
@@ -21,9 +23,9 @@ const PageBoxItem: React.FC<Props> = ({
     <Container>
       {children.map((content, index) => (
         <Link className="PageItem" key={index} to={content.path}>
-          <div className="iconBox">
+          <IconBox className="iconBox" index={index}>
             <img src={content.icon} alt={`${content.title} icon`} className="icon" />
-          </div>
+          </IconBox>
           <span className="title">
             {content.title}
           </span>

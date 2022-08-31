@@ -6,7 +6,7 @@ import { User } from "firebase/auth"; // type used for user from Firebase
 
 // settings types for user contexts
 type UserContextType = {
-  user: User  ; setUser: (newState: User) => void;
+  user: User; setUser: (newState: User) => void;
   authenticated: boolean;
 }
 
@@ -28,7 +28,7 @@ type userProviderProps = {
 const UserContextProvider = ({children}: userProviderProps) => {
   const  [ user, setUser] = usePersistedState("user", InitialValues.user);
 
-  
+
   return(
     <UserContext.Provider 
       value={{
