@@ -15,7 +15,7 @@ export const IconBox = styled.div<Props>`
       border-radius: 0.3vw;
       overflow: hidden;
       
-      animation: scale-in-center 0.45s ${props => (props.index)/12}s linear;
+      animation: scale-in-center 0.45s ${props => ((props.index)/12)}s linear;
 
       .icon{
         height: 80%;
