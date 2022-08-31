@@ -2,7 +2,7 @@ import React from 'react';
 
 // import styled components
 import { Container } from './styles';
-import { IconBox } from '../../../Util/IconBox';;
+import { IconBox } from '../../../Styles/utilStyles/IconBox';;
 
 export interface AppLauncher{
   title: string;

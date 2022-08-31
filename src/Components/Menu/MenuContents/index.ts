@@ -27,6 +27,7 @@ export function PageContents():Page[]{
       title: 'Login',
       path: '/login',
       icon: icon,
-    }
+    },
+    
   ]
 }

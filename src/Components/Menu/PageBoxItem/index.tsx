@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 // import styled components
 import { Container } from './styles';
-import { IconBox } from '../../../Util/IconBox';
+import { IconBox } from '../../../Styles/utilStyles/IconBox';
 
 export interface Page{
   title: string;

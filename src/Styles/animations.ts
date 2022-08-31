@@ -4,7 +4,7 @@ export default createGlobalStyle`
 
 @keyframes slide-in-burred-top {
   0% {
-    transform: translateY(-90vw) scaleY(2.5) scaleX(0.2);
+    transform: translateY(-60vh) scaleY(2.5) scaleX(0.2);
     transform-origin: 50% 100%;
     filter: blur(40px);
     opacity: 0;
