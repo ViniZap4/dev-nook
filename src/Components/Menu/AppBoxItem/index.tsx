@@ -1,6 +1,8 @@
 import React from 'react';
 
+// import styled components
 import { Container } from './styles';
+import { IconBox } from '../../../Util/IconBox';;
 
 export interface AppLauncher{
   title: string;
@@ -18,9 +20,9 @@ const AppBoxItem: React.FC<Props> = ({
     <Container>
       {children?.map((content, index) => (
         <button key={index} className="AppLauncherItem">
-          <div className='iconBox'>
+          <IconBox className='iconBox' index={index}>
             <img src={content.icon} alt={`${content.title} icon`} className="icon" />
-          </div>
+          </IconBox>
           <span>{content.title}</span>
         </button>
       ))}

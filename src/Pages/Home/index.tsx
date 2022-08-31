@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import MenuArea from '../../Components/Menu/MenuArea';
 import { TitleTextColor } from '../../Styles/utilStyles/linearTextColor';
+import Dashboard from '../Dashboard';
 
 //import styles 
 import { Container } from './styles';
