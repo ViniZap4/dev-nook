@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import { PageContainer } from '../../components/styled/Page'
 
-import noise from '../../assets/util/noise.svg'
-import grainyNoise from '../../assets/util/grainy-svg.svg'
-import fractalNoise from '../../assets/util/fractal-noise.svg'
+import noise from '../../assets/texture/noise.svg'
+import fractalNoise from '../../assets/texture/fractal-noise.svg'
+import grainyNoise from '../../assets/texture/grainy-svg.svg'
 
 export const HomeContainer = styled(PageContainer)`
   display: flex;
