@@ -1,3 +1,3 @@
 # Dev Nook
 
-> Rememenber to create a env file and put respectives key
+> Rememenber to create an env file and put respectives key
