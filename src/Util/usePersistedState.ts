@@ -14,11 +14,14 @@ export default function usePersistedState<T>(key: string, initialValue: T): Resp
     }else{
       return initialValue;
     }
+  
   })
 
   useEffect(() =>{
     localStorage.setItem(key, JSON.stringify(state));
   },[key, state])
+
+
 
   return [ state, seState]
 

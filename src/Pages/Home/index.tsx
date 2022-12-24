@@ -1,30 +1,26 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import MenuArea from '../../Components/Menu/MenuArea';
-import { TitleTextColor } from '../../Styles/utilStyles/linearTextColor';
-import Dashboard from '../Dashboard';
+import {HomeContainer} from './styles'
 
-//import styles 
-import { Container } from './styles';
+import LeftContainer from './LeftContents'
+import RightContents from './RightContents'
+import { useContext, useEffect } from 'react'
+import { UserContext } from '../../contexts/userContext'
+import { useNavigate } from 'react-router-dom'
 
+export default function Home(){
+  const {authenticated, user} = useContext(UserContext)
+  const navigate = useNavigate()
 
-const Home: React.FC = () => {
-  return (
-    <Container>
-      <div className="welcome">
-        <TitleTextColor>
-          Welcome to Dev Nook!
-        </TitleTextColor>
-        <span className="description">
-          Made for Developers!
-        </span>
-        <Link to="/login" className="login">
-          <span className='text'>Login</span>
-        </Link>
+  useEffect(()=>{
+    if(authenticated) navigate("/dashboard")
+    console.log(user)
+  },[])
+
+  return(
+    <HomeContainer>
+      <div className='contentConatiner'>
+        <LeftContainer />
+        <RightContents />
       </div>
-      <MenuArea/>
-    </Container>
-  );
+    </HomeContainer>
+  )
 }
-
-export default Home;

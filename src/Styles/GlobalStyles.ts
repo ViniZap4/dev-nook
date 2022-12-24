@@ -1,19 +1,17 @@
 import { createGlobalStyle } from "styled-components";
 
-export default createGlobalStyle`
+export default createGlobalStyle` 
   :Root{
-    --title-size:6vh;
-    --sub-title-size: 3.6vh;
-    --text-size: 2.7vh;
-
+    --title-size:3rem;
+    --sub-title-size: 2.7rem;
+    --text-size: 1.2rem;
   }
-  
   *{
     padding: 0%;
     margin: 0%;
 
     border: border-box;
-    transition: 0.6s;
+    transition: 0.45s;
   }
 
   body {
@@ -29,9 +27,21 @@ export default createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
+  
+  h1{
+    font-size: var(--title-size);
+  }
+  h2{
+    font-size: var(--sub-title-size);
+  }
+  p, span {
+    font-size: var(--text-size);
+  }
+  
   a{
     text-decoration: none;
   }
+  
   button{
     cursor: pointer;
     border: none;

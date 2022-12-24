@@ -1,31 +1,33 @@
-import React, { useContext } from 'react';
+import { useContext, useEffect } from "react"
+import AppRouter from "../Router"
 
-//import router
-import AppRouter from '../Router';
+import Background from "../components/Background"
 
-//import styles
-import GlobalStyles from '../Styles/GlobalStyles';
-import Animations from '../Styles/animations';
+//styles
+import Animations from "../styles/animations"
+import GlobalStyles from "../styles/GlobalStyles"
+import { ThemeProvider } from "styled-components"
 
-//import themes
-import {ThemeProvider } from 'styled-components';
+//contexts
+import ThemeContextProvider, { ThemeContext } from "../contexts/themeContext"
+import UserContextProvider from "../contexts/userContext"
 
-//import contexts
-import themeContext from '../Contexts/themeContext';
-import UserContextProvider from '../Contexts/userContext';
+function App() {
+  const {theme} = useContext(ThemeContext)
 
-const App: React.FC = () => {
-  const {theme} = useContext(themeContext)
+  return (
+    <UserContextProvider>
+      <ThemeContextProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyles />
+          <Animations/>
+          <AppRouter />
+          <Background /> 
+        </ThemeProvider>
+      </ThemeContextProvider>
+    </UserContextProvider>
 
-  return (<>
-    <ThemeProvider theme={theme}>
-      <UserContextProvider>
-        <Animations />
-        <GlobalStyles />
-        <AppRouter />
-      </UserContextProvider>
-    </ThemeProvider>
-  </>);
+  )
 }
 
-export default App;
+export default App

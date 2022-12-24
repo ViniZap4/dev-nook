@@ -1,18 +1,14 @@
-import React, { useContext } from 'react';
-import MenuArea from '../../Components/Menu/MenuArea';
-import { UserContext } from '../../Contexts/userContext';
+import { PageContainer } from "../../components/styled/Page";
+import { useContext } from "react";
+import { UserContext } from "../../contexts/userContext";
 
-import { Container } from './styles';
 
-const Dashboard: React.FC = () => {
-  const {user} = useContext(UserContext)
-  
-  return (
-    <Container>
-      <h1> Hello {user?.displayName}</h1>
-      <MenuArea />
-    </Container>
-  );
+export default function Dashboard(){
+  const {userGitHubData} = useContext(UserContext)
+
+  return(
+    <PageContainer>
+      <p style={{color: "#fff"}}> Olá {userGitHubData.login}</p>
+    </PageContainer>
+  )
 }
-
-export default Dashboard;

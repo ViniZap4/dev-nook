@@ -3,7 +3,7 @@ import { getAnalytics } from "firebase/analytics";
 import {getAuth} from "firebase/auth"
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_FIREBASE_KEY,
+  apiKey: import.meta.env.VITE_FIREBASE_KEY,
   authDomain: "dev-nook.firebaseapp.com",
   projectId: "dev-nook",
   storageBucket: "dev-nook.appspot.com",
