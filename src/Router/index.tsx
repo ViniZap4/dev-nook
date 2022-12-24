@@ -1,34 +1,25 @@
-import React from 'react';
-
 import {
   BrowserRouter,
   Routes,
-  Route
-} from 'react-router-dom';
+  Route,
+} from 'react-router-dom'
 
+import { AuthenticatedPrivate } from './PrivateRoute'
 
-//importing pages
-import Dashboard from '../Pages/Dashboard';
-import Home from '../Pages/Home';
-import Login from '../Pages/Login';
+//import pages
+import Home from '../pages/Home'
+import Dashboard from '../pages/Dashboard'
+import NotFound from '../pages/NotFound'
 
-//import Router components
-import { AuthenticatedPrivate, NoAuthenticatedPrivate } from './PrivateRoute';
-
-const AppRouter: React.FC = () => {
-  return (
+export default function AppRouter(){
+  return(
     <BrowserRouter>
-
       <Routes>
-
-        <Route path="/" element={<NoAuthenticatedPrivate><Home/></NoAuthenticatedPrivate>} />
-        <Route path="/dashboard" element={<AuthenticatedPrivate><Dashboard/></AuthenticatedPrivate>} />
-        <Route path="/login" element={<NoAuthenticatedPrivate><Login/></NoAuthenticatedPrivate>} />
+        <Route path="*" element={<NotFound />} />
+        <Route path='/' element={<Home />}/>
+        <Route path='/dashboard' element={<AuthenticatedPrivate><Dashboard /></AuthenticatedPrivate>} />
 
       </Routes>
-
     </BrowserRouter>
-  );
+  )
 }
-
-export default AppRouter;

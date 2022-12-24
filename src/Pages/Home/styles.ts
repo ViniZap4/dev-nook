@@ -1,53 +1,27 @@
-import styled from "styled-components";
+import styled from 'styled-components'
+import { PageContainer } from '../../components/styled/Page'
 
+import noise from '../../assets/util/noise.svg'
+import grainyNoise from '../../assets/util/grainy-svg.svg'
+import fractalNoise from '../../assets/util/fractal-noise.svg'
 
-export const Container = styled.div`
+export const HomeContainer = styled(PageContainer)`
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100vw;
-  height: 100vh;
-  background-color: ${props => props.theme.colors.background};
-  background-size: cover;
-  background-position: center;
+  align-items:  center;
+  justify-content: center;
 
-  .welcome {
-    display: flex;
-    flex-direction: column;
   
-    margin-left: 6vw;
-    border-radius: 3vh;
+  .contentConatiner{
+    display: flex;
+    align-items:  center;
+    justify-content: center;
 
-    .description{
-      color: ${props => props.theme.colors.secondary};
-      font-size: var(--sub-title-size);
-    }
-    .login{
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: max-content;
-      margin-top:4.5vh;
-      border: 0.3vh solid ${props => props.theme.colors.primary};
-      border-radius: 0.7vh;
-      background-color: ${props => props.theme.colors.background};
-        
-      .text{
-        margin: 0.36vh 0.63vw;
-        font-size: var(--text-size);
-        color: ${props => props.theme.colors.primary};
-      }
-      
-      &:hover{
-        background-color: ${props => props.theme.colors.primary};
-        transform: scale(1.15);
+    border-radius: 0.9vh;
+    box-shadow: 0px 0px 3.9vh #0000002b;
 
-        .text{
-          color: #fff;
-        }
-      }
+    padding: 2.1vh 3vw;
 
-    }
-   
+    background-image:  linear-gradient(360deg, ${({theme}) => theme.colors.background}45, #ffffff00), url(${noise}) ;
+    backdrop-filter: blur(18vh);
   }
 `

@@ -1,6 +1,6 @@
 import { Navigate } from "react-router-dom"
-import { ReactNode, useContext } from "react"
-import { UserContext } from "../Contexts/userContext";
+import { PropsWithChildren, ReactNode, useContext } from "react"
+import { UserContext } from "../contexts/userContext";
 
 
 interface PrivateRouteProps {
@@ -19,36 +19,24 @@ export const PrivateRoute: React.FC<PrivateRouteProps> = ({
 }
 
 
+//Private Routes for Authenticated user 
+export function AuthenticatedPrivate(props: PropsWithChildren){
+  const {authenticated} =useContext(UserContext)
 
-
-interface AuthenticattionPrivateProps  {
-  children: ReactNode;
-}
+  return(
+    <PrivateRoute condition={!authenticated} path="/">
+      {props.children}
+    </PrivateRoute>
+  )
+} 
 
 //Private Routes for Authenticated user 
-export const  AuthenticatedPrivate: React.FC<AuthenticattionPrivateProps> = ({
-  children
-}) => {
+export function NoAuthenticatedPrivate(props: PropsWithChildren){
   const {authenticated} =useContext(UserContext)
 
   return(
-    <PrivateRoute condition={!authenticated} path="/login">
-      {children}
+    <PrivateRoute condition={authenticated} path="/">
+      {props.children}
     </PrivateRoute>
   )
-  
-}
-
-//Private Routes for no Authenticated user 
-export const  NoAuthenticatedPrivate: React.FC<AuthenticattionPrivateProps> = ({
-  children
-}) => {
-  const {authenticated} =useContext(UserContext)
-
-  return(
-    <PrivateRoute condition={authenticated} path="/dashboard">
-      {children}
-    </PrivateRoute>
-  )
-  
 }
