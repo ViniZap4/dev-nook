@@ -2,7 +2,7 @@ import { createContext, ReactNode} from "react"
 
 
 import { User } from "firebase/auth"// type used for user from Firebase
-import usePersistedState from "../Util/usePersistedState"
+import usePersistedState from "../util/usePersistedState"
 import { UserGitHubData } from "../@types/userGitHubData";
 
 // settings types for user contexts
