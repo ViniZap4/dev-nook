@@ -14,7 +14,6 @@ export default function AuthenticationPopup(){
   async function getUserGitHubData(id:string){
     const response = await gitHubApi.get(`/user/${id}`)
     setUserGitHubData(response.data)
-    //response.data.login
   }
 
   function handleGitHubSignIn(){

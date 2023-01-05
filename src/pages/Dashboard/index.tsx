@@ -1,14 +1,16 @@
-import { PageContainer } from "../../components/styled/Page";
+import { DashBoardContainer, DashBoardContentContainer } from "./styles";
+
+//context
 import { useContext } from "react";
 import { UserContext } from "../../contexts/userContext";
-
+import UserBox from "./UserBox";
 
 export default function Dashboard(){
   const {userGitHubData} = useContext(UserContext)
 
   return(
-    <PageContainer>
-      <p style={{color: "#fff"}}> Olá {userGitHubData.login}</p>
-    </PageContainer>
+    <DashBoardContainer>
+        <UserBox />
+    </DashBoardContainer>
   )
 }

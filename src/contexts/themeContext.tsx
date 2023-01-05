@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react"
+import React, { createContext} from "react"
 
 // types
 import { DefaultTheme } from "styled-components"
@@ -6,6 +6,7 @@ import { bluePalette, cianoPalette, color, greenPalette, orangePalette, pinkPale
 
 import dark from "../styles/themes/dark"
 import light from "../styles/themes/light"
+import usePersistedState from "../util/usePersistedState"
 
 
 type themeContextType = {
@@ -15,16 +16,14 @@ type themeContextType = {
 
 const InitialValues ={
   theme: dark, setTheme: () => {},
-  colors: cianoPalette,  setColors: () => {}
+  colors: pinkPalette,  setColors: () => {}
 }
 
 export const ThemeContext = createContext<themeContextType>(InitialValues)
 
 export default function ThemeContextProvider(props: React.PropsWithChildren){
-  const [theme, setTheme] = useState<DefaultTheme>(InitialValues.theme)
-  const [colors, setColors] = useState<color>(InitialValues.colors)
-
-
+  const [theme, setTheme] = usePersistedState<DefaultTheme>("theme" , InitialValues.theme)
+  const [colors, setColors] = usePersistedState<color>("palette" ,InitialValues.colors)
 
   return(
     <ThemeContext.Provider

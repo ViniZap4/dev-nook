@@ -11,5 +11,10 @@ export const Container = styled.div`
     justify-content: center;
     flex-direction: column;
     color: ${({theme}) => theme.colors.text};
+    text-align: center;
+    margin: 1.8vh 2.7vw;
+  }
+  h1{
+    margin-bottom: 2.7vh;
   }
 `

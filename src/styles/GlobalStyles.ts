@@ -3,8 +3,8 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle` 
   :Root{
     --title-size:3rem;
-    --sub-title-size: 2.7rem;
-    --text-size: 1.2rem;
+    --sub-title-size: 2.1rem;
+    --text-size: 1rem;
   }
   *{
     padding: 0%;
@@ -45,6 +45,7 @@ export default createGlobalStyle`
   button{
     cursor: pointer;
     border: none;
+    background: none;
   }
 
 `

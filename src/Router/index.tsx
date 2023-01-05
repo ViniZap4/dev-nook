@@ -4,7 +4,8 @@ import {
   Route,
 } from 'react-router-dom'
 
-import { AuthenticatedPrivate } from './PrivateRoute'
+
+import RouteElement from './RouteElement'
 
 //import pages
 import Home from '../pages/Home'
@@ -16,9 +17,8 @@ export default function AppRouter(){
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<NotFound />} />
-        <Route path='/' element={<Home />}/>
-        <Route path='/dashboard' element={<AuthenticatedPrivate><Dashboard /></AuthenticatedPrivate>} />
-
+        <Route path='/' element={<RouteElement content={<Home />} />}/>
+        <Route path='/dashboard' element={<RouteElement privateAuth content={<Dashboard />} />} />
       </Routes>
     </BrowserRouter>
   )
