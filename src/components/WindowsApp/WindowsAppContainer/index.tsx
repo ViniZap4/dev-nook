@@ -1,4 +1,3 @@
-import { Container } from "./styles";
 import WindowsApp from "..";
 
 //context
@@ -8,7 +7,6 @@ import { AppContext } from "../../../contexts/appsContext";
 export default function WindowsAppContainer(){
   const {apps, mousePosition, setMousePosition} = useContext(AppContext)
 
-  
   useEffect(() => {
     function handleMouseMove(event: any){
       setMousePosition({ x: event.clientX, y: event.clientY });
@@ -22,8 +20,6 @@ export default function WindowsAppContainer(){
       window.removeEventListener('click', handleMouseMove);
     };
   }, []);
-
- 
 
   return(
     <>
