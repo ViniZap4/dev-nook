@@ -5,12 +5,9 @@ import { color } from "../../styles/colors";
 
 interface ContainerProps {
   focus: boolean,
-  colors: color,
-  position:{ x: number, y: number},
   isDraggable: boolean,
   isMinimized: boolean,
   isFullScreen:boolean,
-  size: { x: number, y: number},
   isResizing: boolean,
 }
 
@@ -19,7 +16,7 @@ export const Container = styled(BoxContainer)<ContainerProps>`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-
+  flex-wrap: nowrap;
   position: fixed;
   margin: 0%;
   
@@ -42,21 +39,15 @@ export const Container = styled(BoxContainer)<ContainerProps>`
     `) 
   }}
 
-  width: ${props => props.size.x}px;
-  height: ${props => props.size.y}px;
   min-width: 300px;
   min-height: 300px;
 
-  ${props => props.isFullScreen ? (`
+  ${props => {
+    if(props.isFullScreen) return(`
       transition: top 0.6s, left 0.6s, ;
-      top: 0px;
-      left: 0px;
       z-index: 5;
-    `) : (`
-      top:  ${props.position.y}px;
-      left: ${props.position.x}px;
     `)
-  }
+  }}
   ${props => {
     if(props.isMinimized) return(`
       transform: scale(0);
@@ -86,7 +77,6 @@ export const Container = styled(BoxContainer)<ContainerProps>`
 
     span{
       margin: 0.6rem;
-      //color: #${props => props.colors[0]};
       color: ${({theme}) => theme.colors.text}
     }
 

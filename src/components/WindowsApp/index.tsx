@@ -8,7 +8,6 @@ import MinimizeIcon from "../../assets/icons/actionButtons/MinimizeIcon";
 
 //context
 import { AppContext } from "../../contexts/appsContext";
-import { ThemeContext } from "../../contexts/themeContext";
 import usePersistedState from "../../util/usePersistedState";
 //components
 import ActionButton from "./ActionButton";
@@ -16,10 +15,8 @@ import ActionButton from "./ActionButton";
 import { Container } from "./styles";
 
 export default function WindowsApp({title, element, icon, minimize}: App){
-  
-  const {colors} = useContext(ThemeContext)
   const {mousePosition, apps, setApps,appFocus, setAppFocus} = useContext(AppContext)
-  
+
   const [focus, setFocus] = useState(true)
 
   const refWindow = useRef<HTMLDivElement>(null)
@@ -46,27 +43,30 @@ export default function WindowsApp({title, element, icon, minimize}: App){
     }
     setAppFocus(title)
   }
+
   useEffect(() => {
     handleAtribute()
+
+    document.addEventListener("mouseup",() => hundleMouseUp());
+    return(
+      document.removeEventListener("mouseup",() => hundleMouseUp())
+    )
   },[])
 
   useEffect(() => {
     setFocus(appFocus === title)
   },[appFocus])
 
-
   function hundleMouseUp(){
-    isUnDraggable()
+    setDraggable(false)
     setResizable(resizableInitialValue)
-    setIsResizing(false)
-    setResizable(resizableInitialValue)
+    if(isResizing) setIsResizing(false)
   }
  
-
   // drag
   function grab(){
-    if(!draggable) return
-    
+    if(!draggable)  return
+
     var newPosition = { x: mousePosition.x-distance.x , y: mousePosition.y-distance.y }
     
     if(newPosition.x <= 0) newPosition.x = 0
@@ -84,10 +84,7 @@ export default function WindowsApp({title, element, icon, minimize}: App){
     setDistance({ x: mousePosition.x-position.x, y:mousePosition.y -position.y })
     setDraggable(true)
   }
-  function isUnDraggable(){
-    setDraggable(false)
-  }
-
+  
   function removeApp(){
     const appRemoved = apps.filter(obj => {
       return obj.title !== title
@@ -108,22 +105,21 @@ export default function WindowsApp({title, element, icon, minimize}: App){
     }
   },[isMinimized])
 
-    //fullScreen
-    useEffect(() => {
-      if(!isFullScreen){
-        setWindowSize(size)
-      }
-    },[size])
-  
-    function handleFullSize(){
-      if(isFullScreen){
-        setSize(windowSize)
-      }else{
-        setSize({x: window.innerWidth, y: window.innerHeight})
-      }
-      setIsFullScreen(!isFullScreen)
+  //fullScreen
+  useEffect(() => {
+    if(!isFullScreen){
+      setWindowSize(size)
     }
-
+  },[size])
+  
+  function handleFullSize(){
+    if(isFullScreen){
+      setSize(windowSize)
+    }else{
+      setSize({x: window.innerWidth, y: window.innerHeight})
+    }
+    setIsFullScreen(!isFullScreen)
+  }
 
   function rezise(){
     if(!isResizing) return
@@ -135,7 +131,6 @@ export default function WindowsApp({title, element, icon, minimize}: App){
         setPosition({...position, y: mousePosition.y})
         return
       }
-
       if(resizable.bottom){
         setSize({x: resizeRight(), y: resizeBottom()})
         return
@@ -185,20 +180,19 @@ export default function WindowsApp({title, element, icon, minimize}: App){
     setAllDistance({ x: (position.x + size.x), y: (position.y + size.y)})
   }
 
-  useEffect(()=>{
-    document.addEventListener("mouseup",() => hundleMouseUp());
-    return(
-      document.removeEventListener("mouseup",() => hundleMouseUp())
-    )
-  },[])
-
   useEffect(() => {
     grab()
     rezise()
   },[mousePosition])
 
   return(
-    <Container ref={refWindow} colors={colors} focus={focus} position={position} isDraggable={draggable} isMinimized={isMinimized} size={size} isFullScreen={isFullScreen} isResizing={isResizing} onMouseDown={()=>setAppFocus(title)}>
+    <Container 
+      ref={refWindow} focus={focus} isDraggable={draggable} isMinimized={isMinimized} isFullScreen={isFullScreen} isResizing={isResizing} onMouseDown={()=>setAppFocus(title)}
+      style={{
+        top: isFullScreen? "0px" : position.y , left: isFullScreen? "0px" : position.x,
+        width: `${size.x}px` , height: `${size.y}px`
+      }}
+    >
       <div className="header" onMouseDown={isDraggable} >
         <div className="ActionButtons">
           <ActionButton focus={focus} color="#f00" action={removeApp} icon={<CloseIcon color={focus?"#000": "#ccc"} />}/>
@@ -209,7 +203,7 @@ export default function WindowsApp({title, element, icon, minimize}: App){
         {typeof icon === 'string' ? <img src={icon} className="iconHeader" alt="icon" /> : icon }
       </div>
       {element}
-    
+  
       <div className="leftGrab"   onMouseDown={() => hundleResize({...resizable, left: true})}   ></div>
       <div className="rightGrab"  onMouseDown={() => hundleResize({...resizable, right: true})}  ></div>
       <div className="topGrab"    onMouseDown={() => hundleResize({...resizable, top: true})}    ></div>
@@ -219,6 +213,7 @@ export default function WindowsApp({title, element, icon, minimize}: App){
       <div className="topRightGrab"    onMouseDown={() => hundleResize({...resizable, right: true, top: true})}   ></div>
       <div className="bottomLeftGrab"  onMouseDown={() => hundleResize({...resizable, left:  true, bottom: true})}></div>
       <div className="bottomRightGrab" onMouseDown={() => hundleResize({...resizable, right: true, bottom: true})}></div>
+
     </Container>
   )
 }
@@ -234,4 +229,3 @@ export default function WindowsApp({title, element, icon, minimize}: App){
                  Right: {resizable.right.toString()},
                  Bottom: {resizable.bottom.toString()}, 
  */
-
