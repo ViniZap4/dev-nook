@@ -1,6 +1,9 @@
 export type UserGitHubData ={
   login: string,
-  avatar_url: String,
-  gravatar_id: String,
+  bio: string,
+  avatar_url: string,
+  public_repos: String,
   url: String,
+  followers: Number,
+  following:Number,
 }

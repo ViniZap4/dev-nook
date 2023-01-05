@@ -7,16 +7,16 @@ export const colors = [
 export type color = typeof pinkPalette
 
 export const pinkPalette = [
-  "F825B3",
-  "C721D9",
-  "AA30F0",
-  "6321D9",
-  "3825F8",
-  "F825B3",
-  "C721D9",
-  "AA30F0",
-  "6321D9",
-  "3825F8",
+  "ED0CF7",
+  "970ACC",
+  "1005FC",
+  "410BD4",
+  "8F26f9",
+  "ED0CF7",
+  "970ACC",
+  "1005FC",
+  "410BD4",
+  "8F26f9",
 ]
 
 export const cianoPalette = [
@@ -46,16 +46,23 @@ export const orangePalette = [
 ]
 
 export const bluePalette = [
-  "7500EB",
-  "410BD4",
-  "1005FC",
-  "970ACC",
+  //"7500EB",
   "ED0CF7",
-  "7500EB",
-  "410BD4",
-  "1005FC",
   "970ACC",
+  "1005FC",
+  "410BD4",
+  "8F26f9",
   "ED0CF7",
+  "970ACC",
+  "1005FC",
+  "410BD4",
+  "8F26f9",
+  //"7500EB",
+  //"8F26f9",
+  //"410BD4",
+  //"1005FC",
+  //"970ACC",
+  //"ED0CF7",
 ]
 
 export const greenPalette = [

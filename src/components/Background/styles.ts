@@ -19,5 +19,5 @@ export const Container = styled.div<BackgroundConteinerProps>`
   left: 0px;
 
   background-color:transparent;
-  background-image: linear-gradient(to bottom,  ${({theme}) => theme.colors.background} , #${props => props.colors[1]});
+  background-image: linear-gradient(to bottom,  ${({theme}) => theme.colors.background} , #${props => props.colors[0]});
 `
