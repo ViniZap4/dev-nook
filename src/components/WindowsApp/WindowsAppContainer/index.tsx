@@ -15,11 +15,15 @@ export default function WindowsAppContainer(){
     };
 
     window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('click', handleMouseMove);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('click', handleMouseMove);
     };
   }, []);
+
+ 
 
   return(
     <>

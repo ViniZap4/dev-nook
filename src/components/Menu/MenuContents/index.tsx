@@ -25,7 +25,7 @@ export default function MenuContents(){
 
   return(
     <>
-      <MenuItem label="Dashboard" icon={<DashboardIcon colors={colors} />} action={() => navigate("/dashboard")} /> |
+      <MenuItem label="Dashboard" icon={<DashboardIcon colors={colors} />}  action={() => navigate("/dashboard")} /> |
       <MenuItem label="Settings"  icon={<SettingsIcon colors={colors} />} app element={<Settings />}/>
       <MenuItem label={userGitHubData.login} icon={userGitHubData.avatar_url} />
     </>
