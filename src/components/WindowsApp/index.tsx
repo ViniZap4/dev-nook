@@ -18,11 +18,14 @@ import { Container } from "./styles";
 export default function WindowsApp({title, element, icon, minimize}: App){
   
   const {colors} = useContext(ThemeContext)
-  const {mousePosition, apps, setApps} = useContext(AppContext)
+  const {mousePosition, apps, setApps,appFocus, setAppFocus} = useContext(AppContext)
+  
+  const [focus, setFocus] = useState(true)
+
   const refWindow = useRef<HTMLDivElement>(null)
   const [isMinimized, setIsMinimized] = useState(minimize)
 
-  const [position, setPosition] = usePersistedState(`${title}_position`,{x: 10, y: 10})
+  const [position, setPosition] = usePersistedState(`${title}_position`,{x: 100, y: 100})
   const [distance, setDistance] = useState({x: 10, y: 10})
   const [draggable, setDraggable] = useState(false)
 
@@ -41,10 +44,15 @@ export default function WindowsApp({title, element, icon, minimize}: App){
     if (refWindow !== null){
       setSize({ x: windowSize.x, y: windowSize.y})
     }
+    setAppFocus(title)
   }
   useEffect(() => {
     handleAtribute()
   },[])
+
+  useEffect(() => {
+    setFocus(appFocus === title)
+  },[appFocus])
 
 
   function hundleMouseUp(){
@@ -66,7 +74,6 @@ export default function WindowsApp({title, element, icon, minimize}: App){
     if(newPosition.x + size.x>= window.innerWidth) newPosition.x =  window.innerWidth-size.x
     if(newPosition.y + size.y >= window.innerHeight) newPosition.y = window.innerHeight-size.y
     
-
     if(newPosition.x <= 0 || newPosition.y <= 0 || mousePosition.x >= window.innerWidth || mousePosition.y >= window.innerHeight){
       setDraggable(false)
     }
@@ -95,10 +102,11 @@ export default function WindowsApp({title, element, icon, minimize}: App){
 
   useEffect(()=>{
     const appIndex = apps.findIndex((obj => obj.title === title));
-    apps[appIndex].minimize = isMinimized
-    setApps(apps)
+    if(apps[appIndex].minimize !== isMinimized){
+      apps[appIndex].minimize = isMinimized
+      setApps(apps)
+    }
   },[isMinimized])
-
 
     //fullScreen
     useEffect(() => {
@@ -136,6 +144,8 @@ export default function WindowsApp({title, element, icon, minimize}: App){
     }
     
     if(resizable.left){
+      if(resizeLeft() < 300) return
+
       if(resizable.top){
         if(resizeTop() < 300) return
         setSize({ x: resizeLeft(), y:resizeTop()})
@@ -147,7 +157,6 @@ export default function WindowsApp({title, element, icon, minimize}: App){
         setPosition({...position, x: mousePosition.x})
         return
       }
-      if(resizeLeft() < 300) return
       setSize({...size, x: resizeLeft()})
       setPosition({...position, x:  mousePosition.x})
     }
@@ -189,12 +198,12 @@ export default function WindowsApp({title, element, icon, minimize}: App){
   },[mousePosition])
 
   return(
-    <Container ref={refWindow} colors={colors} position={position} isDraggable={draggable} isMinimized={isMinimized} size={size} isFullScreen={isFullScreen} isResizing={isResizing}>
+    <Container ref={refWindow} colors={colors} focus={focus} position={position} isDraggable={draggable} isMinimized={isMinimized} size={size} isFullScreen={isFullScreen} isResizing={isResizing} onMouseDown={()=>setAppFocus(title)}>
       <div className="header" onMouseDown={isDraggable} >
         <div className="ActionButtons">
-          <ActionButton color="#f00" action={removeApp} icon={<CloseIcon color="#000" />}/>
-          <ActionButton color="#ff0" action={()=>setIsMinimized(true)} icon={<MinimizeIcon color="#000" />}/>
-          <ActionButton color="#0f0" action={handleFullSize} icon={<MaxScreenIcon color="#000" />}/>
+          <ActionButton focus={focus} color="#f00" action={removeApp} icon={<CloseIcon color={focus?"#000": "#ccc"} />}/>
+          <ActionButton focus={focus} color="#ff0" action={()=>setIsMinimized(true)} icon={<MinimizeIcon color={focus?"#000": "#ccc"} />}/>
+          <ActionButton focus={focus} color="#0f0" action={handleFullSize} icon={<MaxScreenIcon color={focus?"#000": "#ccc"} />}/>
         </div>
         <span>{title}</span>
         {typeof icon === 'string' ? <img src={icon} className="iconHeader" alt="icon" /> : icon }

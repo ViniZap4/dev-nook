@@ -4,6 +4,7 @@ import noise from  "../../assets/texture/noise.svg"
 import { color } from "../../styles/colors";
 
 interface ContainerProps {
+  focus: boolean,
   colors: color,
   position:{ x: number, y: number},
   isDraggable: boolean,
@@ -26,10 +27,17 @@ export const Container = styled(BoxContainer)<ContainerProps>`
 
   overflow: hidden;
 
-  z-index: 2;
+  ${props => props.focus ? (`
+      z-index: 3;
+    `) : (`
+      z-index: 2;
+      filter: brightness(0.6);
+    `)
+  }
   ${props => {
     if(props.isResizing) return(`
       transition: transform 0.6s, width 0s, height 0s;
+      user-select: none;
       z-index: 5;
     `) 
   }}
@@ -62,7 +70,7 @@ export const Container = styled(BoxContainer)<ContainerProps>`
       z-index: 5;
     `) 
   }}
-  
+
   .header{
     display: flex;
     align-items: center;
