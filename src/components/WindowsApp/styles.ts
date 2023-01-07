@@ -24,6 +24,8 @@ export const Container = styled(BoxContainer)<ContainerProps>`
 
   overflow: hidden;
 
+  box-shadow: 0px 0px 2.1vh #0000001b;
+
   ${props => props.focus ? (`
       z-index: 3;
     `) : (`

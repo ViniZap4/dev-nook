@@ -34,6 +34,9 @@ export default createGlobalStyle`
   h2{
     font-size: var(--sub-title-size);
   }
+  h3{
+    font-size: 1.5rem;
+  }
   p, span {
     font-size: var(--text-size);
   }

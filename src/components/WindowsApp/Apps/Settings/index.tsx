@@ -1,18 +1,12 @@
-import { useContext, useEffect } from "react"
-import { AppContext } from "../../../../contexts/appsContext"
+import { Container } from "./style"
+import BlockSettings from "./BlockSettings"
+import StylesSettings from "./blocks/StylesSettings"
 
 export default function Settings(){
-  const {mousePosition} = useContext(AppContext)
-  
-  //return(<h2>X: {mousePosition.x}, y: {mousePosition.y} </h2>)
-  return(
-    <div>
-      <h1>
-        Hello
-      </h1>
-      <span>
-        Settings
-      </span>
-    </div>
+
+    return(
+    <Container>
+      <StylesSettings />
+    </Container>
   )
 }
