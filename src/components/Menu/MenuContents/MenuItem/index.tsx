@@ -30,16 +30,7 @@ export default function MenuItem({icon, label,app = false , action = () => {}, e
         }])
         return
       }
-        /*
-        apps.push({
-          title: label,
-          icon: icon,
-          element: element,
-          minimize: false
-        })
-        return
-      }
-      */
+      
       const appIndex = apps.findIndex((obj => obj.title === label));
       apps[appIndex].minimize = !apps[appIndex].minimize
       setApps(apps)

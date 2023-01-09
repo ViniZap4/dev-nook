@@ -13,7 +13,7 @@ export default function StylesSettings(){
   const [clicks, setClicks] = useState(0)
 
   function HundleCache(){
-    if(clicks >= 6) setTimeout(()=>{location.reload()},800)
+    if(clicks >= 5) setTimeout(()=>{location.reload()},800)
     setClicks(clicks+1)
   }
 
