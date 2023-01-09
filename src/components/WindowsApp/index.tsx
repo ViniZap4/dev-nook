@@ -79,9 +79,6 @@ export default function WindowsApp({title, element, minimize}: App){
     if(newPosition.x + size.x>= window.innerWidth) newPosition.x =  window.innerWidth-size.x
     if(newPosition.y + size.y >= window.innerHeight) newPosition.y = window.innerHeight-size.y
     
-    if(newPosition.x <= 0 || newPosition.y <= 0 || mousePosition.x >= window.innerWidth || mousePosition.y >= window.innerHeight){
-      setDraggable(false)
-    }
     setPosition(newPosition)
   }
 
