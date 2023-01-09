@@ -8,10 +8,10 @@ interface MenuItemProps{
   label: string;
   app?: boolean
   action?: () => void;
-  element?: JSX.Element
+  element?: number
 }
 
-export default function MenuItem({icon, label,app = false , action = () => {}, element = <></>}: MenuItemProps){
+export default function MenuItem({icon, label,app = false , action = () => {}, element = undefined}: MenuItemProps){
   const {apps, setApps} = useContext(AppContext)
 
   function handleAction(){
@@ -20,23 +20,34 @@ export default function MenuItem({icon, label,app = false , action = () => {}, e
       const exist = apps.filter(obj => {
         return obj.title === label
       })
+      
       if(exist.length === 0){
         setApps([ ...apps ,{
           title: label,
-          icon: icon,
+          icon: "icon",
           element: element,
           minimize: false
         }])
         return
       }
-
+        /*
+        apps.push({
+          title: label,
+          icon: icon,
+          element: element,
+          minimize: false
+        })
+        return
+      }
+      */
       const appIndex = apps.findIndex((obj => obj.title === label));
       apps[appIndex].minimize = !apps[appIndex].minimize
       setApps(apps)
-
+   
     }else{
       action()
     }
+
   }
 
 

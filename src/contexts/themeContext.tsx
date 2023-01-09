@@ -15,7 +15,7 @@ type themeContextType = {
 }
 
 const InitialValues ={
-  theme: dark, setTheme: () => {},
+  theme: light, setTheme: () => {},
   colors: pinkPalette,  setColors: () => {}
 }
 
