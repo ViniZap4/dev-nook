@@ -15,6 +15,11 @@ import AppsController from "./Apps/AppControl";
 //style
 import { Container } from "./styles";
 
+interface dimension2d {
+  x: number,
+  y: number
+}
+
 export default function WindowsApp({title, element, minimize}: App){
   const {mousePosition, apps, setApps,appFocus, setAppFocus} = useContext(AppContext)
 
@@ -26,9 +31,11 @@ export default function WindowsApp({title, element, minimize}: App){
   const [position, setPosition] = usePersistedState(`${title}_position`,{x: 100, y: 100})
   const [distance, setDistance] = useState({x: 10, y: 10})
   const [draggable, setDraggable] = useState(false)
-
-  const [size, setSize] = useState({x: 300, y: 300})
-  const [windowSize, setWindowSize] = usePersistedState(`${title}_size` ,{x: 300, y: 300})
+  
+  const sizeStorage = localStorage.getItem(`${title}_size`)
+  
+  const [size, setSize] = useState<dimension2d>(sizeStorage!== null ? JSON.parse(sizeStorage) : {x: 300, y: 300})
+  const [windowSize, setWindowSize] = usePersistedState<dimension2d>(`${title}_size` ,  sizeStorage!== null ? JSON.parse(sizeStorage) : {x: 300, y: 300})
   const [isResizing, setIsResizing] = useState(false)
   const [isFullScreen, setIsFullScreen] = usePersistedState(`${title}_FullScreen`,false)
   const [allDistance, setAllDistance] = useState({ x: (position.x + size.x), y: (position.y + size.y)}) 
