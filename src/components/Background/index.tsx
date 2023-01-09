@@ -8,7 +8,7 @@ import { Container } from "./styles";
 import {ThemeContext} from "../../contexts/themeContext";
 
 export default function Background(){
-  const {colors} = useContext(ThemeContext)
+  const {colors, theme} = useContext(ThemeContext)
   const canvasRef = useRef<HTMLDivElement>(null)
   
   // create canvas tag element
@@ -20,10 +20,7 @@ export default function Background(){
     backgroundAlpha: 0
   });
   
-
-
-  useEffect(() => {
-
+  function hundleBackground(){
     canvasRef.current?.appendChild(canvasView)
     app.stage.filters = [new KawaseBlurFilter(30, 10, true)];
 
@@ -53,10 +50,26 @@ export default function Background(){
     }
 
     return () => {
+      console.log("deleted")
       app.stop()
     };
+  }
 
+  useEffect(() => {
+    hundleBackground()
   }, []);
-  
+
+  useEffect(() => {
+    
+    while (canvasRef.current?.firstChild){
+      canvasRef.current?.removeChild(canvasRef.current?.firstChild)
+    }
+
+    hundleBackground()
+  }, [colors]);
+
+
+
+
   return <Container colors={colors} ref={canvasRef} ></Container>
 }

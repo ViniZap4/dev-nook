@@ -11,10 +11,11 @@ import { AppContext } from "../../contexts/appsContext";
 import usePersistedState from "../../util/usePersistedState";
 //components
 import ActionButton from "./ActionButton";
+import AppsController from "./Apps/AppControl";
 //style
 import { Container } from "./styles";
 
-export default function WindowsApp({title, element, icon, minimize}: App){
+export default function WindowsApp({title, element, minimize}: App){
   const {mousePosition, apps, setApps,appFocus, setAppFocus} = useContext(AppContext)
 
   const [focus, setFocus] = useState(true)
@@ -29,7 +30,7 @@ export default function WindowsApp({title, element, icon, minimize}: App){
   const [size, setSize] = useState({x: 300, y: 300})
   const [windowSize, setWindowSize] = usePersistedState(`${title}_size` ,{x: 300, y: 300})
   const [isResizing, setIsResizing] = useState(false)
-  const [isFullScreen, setIsFullScreen] = useState(false)
+  const [isFullScreen, setIsFullScreen] = usePersistedState(`${title}_FullScreen`,false)
   const [allDistance, setAllDistance] = useState({ x: (position.x + size.x), y: (position.y + size.y)}) 
 
   const resizableInitialValue ={
@@ -39,7 +40,11 @@ export default function WindowsApp({title, element, icon, minimize}: App){
 
   function handleAtribute(){
     if (refWindow !== null){
-      setSize({ x: windowSize.x, y: windowSize.y})
+      if(isFullScreen){
+        setSize({ x: window.innerWidth, y: window.innerHeight})
+      }else{
+        setSize({ x: windowSize.x, y: windowSize.y})
+      }
     }
     setAppFocus(title)
   }
@@ -200,9 +205,9 @@ export default function WindowsApp({title, element, icon, minimize}: App){
           <ActionButton focus={focus} color="#0f0" action={handleFullSize} icon={<MaxScreenIcon color={focus?"#000": "#ccc"} />}/>
         </div>
         <span>{title}</span>
-        {typeof icon === 'string' ? <img src={icon} className="iconHeader" alt="icon" /> : icon }
+        {element !== undefined? AppsController()[element].icon : <></> }
       </div>
-      {element}
+      {element !== undefined? AppsController()[element].content : <></>}
   
       <div className="leftGrab"   onMouseDown={() => hundleResize({...resizable, left: true})}   ></div>
       <div className="rightGrab"  onMouseDown={() => hundleResize({...resizable, right: true})}  ></div>

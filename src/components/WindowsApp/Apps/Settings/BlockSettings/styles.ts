@@ -6,10 +6,12 @@ export const Container = styled.div`
   flex-direction: column;
   background-image:  linear-gradient(360deg, ${({theme}) => theme.colors.background}99, ${({theme}) => theme.colors.background}72), url(${noise}) ;
   width: max-content;
+  max-width: calc(100% - 4.1rem);
+
   padding: 0.9rem;
   margin: 1.2rem;
   border-radius: 0.9rem;
-  box-shadow: 0px 0px 2.7vh #0000002b;
+  box-shadow: 0px 0px 4.7vh #00000078;
 
   .title{
     color: ${({theme}) => theme.colors.text};

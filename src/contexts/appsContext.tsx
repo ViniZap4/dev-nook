@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react"
 import { App } from "../@types/app"
+import usePersistedState from "../util/usePersistedState";
 
 interface MousePosition{
   x: number; y: number;
@@ -20,9 +21,9 @@ const InitialValues ={
 export const AppContext = createContext<AppContextType>(InitialValues)
 
 export default function AppContextProvider(props: React.PropsWithChildren){
-  const [apps, setApps] = useState(InitialValues.apps)
+  const [apps, setApps] = usePersistedState("Apps" ,InitialValues.apps)
   const [mousePosition, setMousePosition] = useState(InitialValues.mousePosition);
-  const [appFocus, setAppFocus] = useState(InitialValues.appFocus)
+  const [appFocus, setAppFocus] = usePersistedState("AppFocus",InitialValues.appFocus)
 
   return(
     <AppContext.Provider
