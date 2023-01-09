@@ -10,18 +10,21 @@ export const FormStyles = styled.form<FormStylesProps>`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  
 
   .division{
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0.3rem 1.6rem;
+    flex-grow: 1;
     background-image:  linear-gradient(360deg, ${({theme}) => theme.colors.background}a0, ${({theme}) => theme.colors.background}45), url(${noise}) ;
     padding: 0.6rem;
     border-radius: 0.6rem;
     box-shadow: 0px 0px 1.9vh #00000047;
 
     .titleStyleSettings{
+      align-self: flex-start;
       color: ${({theme}) => theme.colors.text};
       margin-bottom: 0.6rem;
     }
