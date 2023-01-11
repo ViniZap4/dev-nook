@@ -6,12 +6,13 @@ interface ContainerProps{
   colors: color
 }
 
-export const Container = styled(BoxContainer)<ContainerProps>`
+export const Container = styled.div<ContainerProps>`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 1.8vh;
+  margin: 2.4vh;
   flex-wrap: nowrap;
+  
 
   .iconBox{
     display: flex;
@@ -33,6 +34,7 @@ export const Container = styled(BoxContainer)<ContainerProps>`
   }
   .userData{
     margin-right: 1.8vh;
+    color: ${({theme})=> theme.colors.text};
   
   }
 `

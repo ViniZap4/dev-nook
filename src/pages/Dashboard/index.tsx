@@ -1,16 +1,17 @@
 import { DashBoardContainer, DashBoardContentContainer } from "./styles";
 
-//context
-import { useContext } from "react";
-import { UserContext } from "../../contexts/userContext";
+//contents
 import UserBox from "./UserBox";
+import ShortCutsBox from "./ShortCutsBox";
 
 export default function Dashboard(){
-  const {userGitHubData} = useContext(UserContext)
 
   return(
     <DashBoardContainer>
+      <DashBoardContentContainer>
         <UserBox />
+        <ShortCutsBox />
+      </DashBoardContentContainer>
     </DashBoardContainer>
   )
 }

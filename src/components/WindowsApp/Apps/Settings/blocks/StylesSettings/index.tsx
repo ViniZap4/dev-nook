@@ -1,14 +1,14 @@
 import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import BlockSettings from "../../BlockSettings";
 
-import { cianoPalette, pinkPalette, orangePalette} from "../../../../../../styles/colors"
+import { cianoPalette, pinkPalette, orangePalette, bluePalette} from "../../../../../../styles/colors"
 import { ColorOptionContainer, FormStyles } from "./styles";
 import ColorIcon from "../../../../../../assets/icons/settings/colorIcons";
 import SwitchButton from "../../../../../SwitchButtonTheme";
 import { ThemeContext } from "../../../../../../contexts/themeContext";
 
 export default function StylesSettings(){
-  const colorsPallets = [cianoPalette, pinkPalette, orangePalette]
+  const colorsPallets = [cianoPalette, pinkPalette, orangePalette, bluePalette]
   const {setColors, colors} = useContext(ThemeContext)
   const [clicks, setClicks] = useState(0)
 

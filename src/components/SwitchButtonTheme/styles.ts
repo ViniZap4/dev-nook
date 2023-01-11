@@ -8,11 +8,14 @@ export const Container = styled.button`
     height: 3rem;
    
     &:hover, &:focus{
-    transform: scale(1.1);
-    filter: drop-shadow(0px 0px 1.2vh #00000056);
+      transform: scale(1.1);
+      filter: drop-shadow(0px 0px 1.2vh #00000056);
     }
   }
 
-
+  &:focus svg{
+    transform: scale(1.1);
+    filter: drop-shadow(0px 0px 1.2vh #00000056);
+  }
 
 `

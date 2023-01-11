@@ -8,6 +8,8 @@ interface ButtonStyledProps{
 
 export const ButtonText = styled.button<ButtonStyledProps>`
   display: flex;
+  align-items: center;
+  justify-content: center;
   backdrop-filter: blur(18vh);
   border: 2px solid #${props => props.colors[1]}81;
   box-shadow: 0px 0px 0.9vh #00000026;

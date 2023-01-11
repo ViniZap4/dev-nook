@@ -26,6 +26,7 @@ export const Container= styled(BoxContainer)<MenuProps>`
 
   border: 1px solid #${props => props.colors[0]}45;
   
-  
   color: #fff;
+
+  z-index:1;
 `

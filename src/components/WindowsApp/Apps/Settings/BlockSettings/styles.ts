@@ -7,7 +7,7 @@ export const Container = styled.div`
   background-image:  linear-gradient(360deg, ${({theme}) => theme.colors.background}99, ${({theme}) => theme.colors.background}72), url(${noise}) ;
   width: max-content;
   max-width: calc(100% - 4.1rem);
-
+  //min-width: max-content;
   padding: 0.9rem;
   margin: 1.2rem;
   border-radius: 0.9rem;

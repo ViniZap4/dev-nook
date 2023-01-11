@@ -33,36 +33,30 @@ export const cianoPalette = [
 ]
 
 export const orangePalette = [
-  "FC450D",
   "EB610C",
-  "DE1200",
+  "FC450D",
   "F50C41",
   "ED0CB3",
-  "FC450D",
-  "EB610C",
   "DE1200",
+
+  "EB610C",
+  "FC450D",
   "F50C41",
   "ED0CB3",
+  "DE1200",
 ]
 
 export const bluePalette = [
-  //"7500EB",
-  "ED0CF7",
-  "970ACC",
   "1005FC",
-  "410BD4",
   "8F26f9",
-  "ED0CF7",
+  "410BD4",
   "970ACC",
+  "4192ff",
   "1005FC",
-  "410BD4",
   "8F26f9",
-  //"7500EB",
-  //"8F26f9",
-  //"410BD4",
-  //"1005FC",
-  //"970ACC",
-  //"ED0CF7",
+  "410BD4",
+  "970ACC",
+  "4192ff",
 ]
 
 export const greenPalette = [

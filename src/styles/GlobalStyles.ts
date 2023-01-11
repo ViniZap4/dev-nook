@@ -50,5 +50,7 @@ export default createGlobalStyle`
     border: none;
     background: none;
   }
-
+  input:focus, textarea:focus, select:focus{
+    outline: none;
+  }
 `
