@@ -12,14 +12,17 @@ import { ThemeProvider } from "styled-components"
 import ThemeContextProvider, { ThemeContext } from "../contexts/themeContext"
 import UserContextProvider from "../contexts/userContext"
 import AppContextProvider from "../contexts/appsContext"
+import ShortcutsContextProvider from "../contexts/shortcutsContext"
 
 function App() {
   return (
     <UserContextProvider>
       <ThemeContextProvider>
-        <AppContextProvider>
-          <Content />
-        </AppContextProvider>
+        <ShortcutsContextProvider>
+          <AppContextProvider>
+            <Content />
+          </AppContextProvider>
+        </ShortcutsContextProvider>
       </ThemeContextProvider>
     </UserContextProvider>
   )

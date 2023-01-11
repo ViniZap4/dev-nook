@@ -4,7 +4,7 @@ import { Container } from "./style"
 import { UserContext } from "../../../contexts/userContext"
 import { useContext } from "react"
 import { ThemeContext } from "../../../contexts/themeContext"
-import DashboardIcon from "../../../assets/icons/Dashboard"
+import DashboardIcon from "../../../assets/icons/Menu/Dashboard"
 
 export default function UserBox(){
   const {userGitHubData} = useContext(UserContext)
@@ -16,8 +16,8 @@ export default function UserBox(){
         <img src={userGitHubData.avatar_url} alt="avatarIcon" />
       </div>
       <div className="userData">
-        <h1 style={{color: "#fff"}}> {userGitHubData.login}</h1>
-        <span style={{color: "#d4d4d4"}}> {userGitHubData.bio}</span>
+        <h1> {userGitHubData.login}</h1>
+        <span> {userGitHubData.bio}</span>
       </div>
     </Container>
   )

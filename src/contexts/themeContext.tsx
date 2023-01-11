@@ -2,7 +2,7 @@ import React, { createContext} from "react"
 
 // types
 import { DefaultTheme } from "styled-components"
-import { bluePalette, cianoPalette, color, greenPalette, orangePalette, pinkPalette } from "../styles/colors"
+import { bluePalette, color } from "../styles/colors"
 
 import dark from "../styles/themes/dark"
 import light from "../styles/themes/light"
@@ -15,10 +15,9 @@ type themeContextType = {
 }
 
 const InitialValues ={
-  theme: light, setTheme: () => {},
-  colors: pinkPalette,  setColors: () => {}
+  theme: dark, setTheme: () => {},
+  colors: bluePalette,  setColors: () => {}
 }
-
 export const ThemeContext = createContext<themeContextType>(InitialValues)
 
 export default function ThemeContextProvider(props: React.PropsWithChildren){

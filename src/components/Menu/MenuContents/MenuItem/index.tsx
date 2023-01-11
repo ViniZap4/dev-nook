@@ -1,4 +1,4 @@
-import { ReactNode, useContext } from "react";
+import { ReactNode, useContext, useEffect, useState } from "react";
 import { App } from "../../../../@types/app";
 import { AppContext } from "../../../../contexts/appsContext";
 import { Container } from "./style";
@@ -8,23 +8,26 @@ interface MenuItemProps{
   label: string;
   app?: boolean
   action?: () => void;
-  element?: number
+  element?: number,
+  menu?: boolean
 }
 
-export default function MenuItem({icon, label,app = false , action = () => {}, element = undefined}: MenuItemProps){
-  const {apps, setApps} = useContext(AppContext)
+export default function MenuItem({icon, label,app = false , action = () => {}, element = undefined, menu = false}: MenuItemProps){
+  const {apps, setApps, appFocus, setAppFocus} = useContext(AppContext)
+  const [exist, setExist] = useState(apps.findIndex((app => app.element === element)))
+
+  useEffect(()=>{
+    if(app){
+      setExist(apps.findIndex((app => app.element === element)))
+    }
+  },[apps])
 
   function handleAction(){
     if(app){
       
-      const exist = apps.filter(obj => {
-        return obj.title === label
-      })
-      
-      if(exist.length === 0){
+      if(exist === -1 && menu){
         setApps([ ...apps ,{
           title: label,
-          icon: "icon",
           element: element,
           minimize: false
         }])
@@ -32,17 +35,23 @@ export default function MenuItem({icon, label,app = false , action = () => {}, e
       }
       
       const appIndex = apps.findIndex((obj => obj.title === label));
-      apps[appIndex].minimize = !apps[appIndex].minimize
-      setApps(apps)
+
+      if(appFocus === label || apps[appIndex].minimize){
+        apps[appIndex].minimize = !apps[appIndex].minimize
+        setApps(apps)
+      }else{
+        setAppFocus(label)
+      }
+
+      
    
     }else{
       action()
     }
-
   }
 
-
-  return(
+  //app && exist !== -1 && menu === false || !app || app && menu === true
+  if(app && exist !== -1 && menu === false || !app || app && menu === true) return(
     <Container data-title={label} onClick={handleAction}>
       <div className="iconBox">
         {typeof icon === 'string' ? <img src={icon} alt="icon" /> : icon }
@@ -50,4 +59,6 @@ export default function MenuItem({icon, label,app = false , action = () => {}, e
       <span className="label"> {label} </span>
     </Container>
   )
+
+  return(<></>)
 }

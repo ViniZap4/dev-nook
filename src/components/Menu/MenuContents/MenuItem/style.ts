@@ -3,6 +3,7 @@ import styled from "styled-components";
 import noise from '../../../../assets/texture/noise.svg'
 
 
+
 export const Container = styled.button`
   display: flex;
   flex-direction: column;
@@ -43,10 +44,10 @@ export const Container = styled.button`
     border-radius: 0.6vh;
     background-image:  linear-gradient(360deg, ${({theme}) => theme.colors.background}99, ${({theme}) => theme.colors.background}72), url(${noise}) ;
     backdrop-filter: blur(18vh);
-    
+    white-space: nowrap;
   }
 
-  &:hover{
+  &:hover{ 
     .iconBox{
       transform: scale(1.2) translateY(0.63rem);
       box-shadow: 0px 0px 1.2vh #00000026;

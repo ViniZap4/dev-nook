@@ -16,6 +16,7 @@ export const FormStyles = styled.form<FormStylesProps>`
     display: flex;
     flex-direction: column;
     align-items: center;
+    
     margin: 0.3rem 1.6rem;
     flex-grow: 1;
     background-image:  linear-gradient(360deg, ${({theme}) => theme.colors.background}a0, ${({theme}) => theme.colors.background}45), url(${noise}) ;
@@ -32,6 +33,7 @@ export const FormStyles = styled.form<FormStylesProps>`
     .colorsContainer{
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
     }
   }
 

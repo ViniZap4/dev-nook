@@ -26,13 +26,7 @@ export const Container = styled(BoxContainer)<ContainerProps>`
 
   box-shadow: 0px 0px 2.1vh #0000001b;
 
-  ${props => props.focus ? (`
-      z-index: 3;
-    `) : (`
-      z-index: 2;
-      filter: brightness(0.6);
-    `)
-  }
+
   ${props => {
     if(props.isResizing) return(`
       transition: transform 0.6s, width 0s, height 0s;
@@ -63,6 +57,14 @@ export const Container = styled(BoxContainer)<ContainerProps>`
       z-index: 5;
     `) 
   }}
+
+${props => props.focus ? (`
+      z-index: 3;
+    `) : (`
+      z-index: 2;
+      filter: brightness(0.6);
+    `)
+  }
 
   .header{
     display: flex;
