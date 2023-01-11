@@ -33,7 +33,7 @@ export default function CreateShortcut(){
         <label htmlFor="name">
           <span> Name:</span>
         </label>
-        <input type="text" placeholder="Name" name="name" />
+        <input type="text" placeholder="Name" name="name" required/>
         
         <label htmlFor="url">
           <span>Url:</span>
