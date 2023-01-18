@@ -24,7 +24,7 @@ export default function MenuItem({icon, label,app = false , action = () => {}, e
 
   function handleAction(){
     if(app){
-      
+
       if(exist === -1 && menu){
         setApps([ ...apps ,{
           title: label,
@@ -33,24 +33,21 @@ export default function MenuItem({icon, label,app = false , action = () => {}, e
         }])
         return
       }
-      
+
       const appIndex = apps.findIndex((obj => obj.title === label));
+
+      setAppFocus(label)
 
       if(appFocus === label || apps[appIndex].minimize){
         apps[appIndex].minimize = !apps[appIndex].minimize
         setApps(apps)
-      }else{
-        setAppFocus(label)
       }
 
-      
-   
     }else{
       action()
     }
   }
 
-  //app && exist !== -1 && menu === false || !app || app && menu === true
   if(app && exist !== -1 && menu === false || !app || app && menu === true) return(
     <Container data-title={label} onClick={handleAction}>
       <div className="iconBox">

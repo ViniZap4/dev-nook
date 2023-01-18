@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ShortCutProps } from "../../../../@types/shortcuts";
 import PlusIcon from "../../../../assets/icons/plus";
 import { AppContext } from "../../../../contexts/appsContext";
@@ -25,13 +25,14 @@ export default function NewShortCut(){
     }
   }
 
+
   return(<>
-    <Container onClick={hundleNewShortcut}>
+    <Container  onClick={hundleNewShortcut}>
       <div className="IconBox">
         <PlusIcon colors={colors} />
       </div>
       <span className="shortcutLabel">
-        create new shortcut
+        create shortcut
       </span>
     </Container>
   </>)
