@@ -2,22 +2,13 @@ import styled from "styled-components";
 
 import noise from "../../../../assets/texture/noise.svg"
 import { color } from "../../../../styles/colors";
+import { windowPageApp } from "../../../styled/windowAppPage";
 
 interface ContainerProps{
   colors: color;
 }
 
-export const Container = styled.div<ContainerProps>`
-  display: flex;
-  flex-direction: column;
-  
-  
-  width: 100%;
-  height: 100%;
-
-  overflow-x: hidden;
-  overflow-y: auto;
-
+export const Container = styled(windowPageApp)<ContainerProps>`
   form{
     display: flex; 
     flex-direction: column;
@@ -32,20 +23,30 @@ export const Container = styled.div<ContainerProps>`
     input{
       padding: 0.3rem;
       background-color: transparent;
-      border-radius: 0.3rem;
 
-      backdrop-filter: blur(18vh);
-      border: 2px solid #${props => props.colors[1]}81;
-      box-shadow: 0px 0px 0.9vh #00000026;
-      background-color: #${props => props.colors[1]}36;
-      border-radius: 0.63vh;
-
+     //backdrop-filter: blur(18vh);
+      border: none;
+      border-bottom: 2px solid #${props => props.colors[1]}81;
+      //box-shadow: 0px 0px 0.9vh #00000026;
+      //background-color: #${props => props.colors[1]}36;
+      //border-radius: 0.63vh;
+      margin-bottom: 0.3rem;
+      ${({theme}) => theme.title === "dark" ?`
+        filter: brightness(1);
+      `:`
+        filter: brightness(0.5);
+      `}
       &:hover, &:focus{
-        box-shadow: 0px 0px 1.2vh #00000026;
-        background-color: #${props => props.colors[0]}81;
+        ${({theme}) => theme.title === "dark" ?`
+          filter: brightness(2);
+        `:`
+          filter: brightness(1);
+        `}
+        //box-shadow: 0px 0px 1.2vh #00000026;
+        //background-color: #${props => props.colors[1]}81;
       }
       &::placeholder {
-        color: #${props => props.colors[0]}81;
+        color: #${props => props.colors[1]}81;
         opacity: 1;
       }
     }
@@ -55,14 +56,20 @@ export const Container = styled.div<ContainerProps>`
       margin-top:    0.45rem;
     }
 
-    span, input{
+    span, input, h3{
       color: ${({theme}) => theme.colors.text};
     }
+
+    h3{
+      align-self: center;
+    }
     button{
+      background-image: none;
+      background-color: transparent;
       margin-top: 0.6rem;
-      background-image:  linear-gradient(360deg, ${({theme}) => theme.colors.background}99, ${({theme}) => theme.colors.background}72), url(${noise}) ;
-      
-      &:hover, &:focus {
+     // background-image:  linear-gradient(360deg, ${({theme}) => theme.colors.background}99, ${({theme}) => theme.colors.background}72), url(${noise}) ;
+    
+     &:hover, &:focus {
         transform: scale(1);
       }
     }

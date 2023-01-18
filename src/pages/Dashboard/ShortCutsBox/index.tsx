@@ -2,7 +2,7 @@ import { Container } from "./style"
 
 //context
 import { UserContext } from "../../../contexts/userContext"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { ThemeContext } from "../../../contexts/themeContext"
 import ShortCut from "./ShortCut"
 import { shortcutsContext } from "../../../contexts/shortcutsContext"
@@ -10,7 +10,7 @@ import NewShortCut from "./NewShortCut"
 
 export default function ShortCutsBox(){
   const {userGitHubData} = useContext(UserContext)
-  const {shortcuts} = useContext(shortcutsContext)
+  const {shortcuts, contentMenuContext} = useContext(shortcutsContext)
 
   const {colors} = useContext(ThemeContext)
 
@@ -24,7 +24,7 @@ export default function ShortCutsBox(){
         ))}
         <NewShortCut />
       </div>
-
+      {contentMenuContext}
     </Container>
   )
 }

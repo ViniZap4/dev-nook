@@ -25,7 +25,7 @@ export default function WindowsAppContainer(){
     <>
       {apps?.map((app, index) => {
         if(app.title !== undefined){
-          return <WindowsApp key={index} title={app.title} element={app.element} icon={app.icon} minimize={app.minimize} />
+          return <WindowsApp key={index} title={app.title} element={app.element} minimize={app.minimize} />
         }
       })}
     </>

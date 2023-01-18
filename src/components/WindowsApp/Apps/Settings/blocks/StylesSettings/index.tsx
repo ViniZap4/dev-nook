@@ -20,8 +20,7 @@ export default function StylesSettings(){
   return(
     <BlockSettings title="Appearance">
       <FormStyles onClick={HundleCache}>
-          <div className="division">
-            <h3 className="titleStyleSettings"> Change color </h3>
+          <BlockSettings subtitle="Change color">
             <div className="colorsContainer">
               {colorsPallets.map(color => {
                 const refInput = useRef<HTMLInputElement>(null)
@@ -37,14 +36,18 @@ export default function StylesSettings(){
                 )
               })}
             </div>
-          </div>
-  
-          <div className="division">
-            <h3 className="titleStyleSettings"> Change Theme </h3>
+            </BlockSettings>
+          
+          <BlockSettings subtitle="Change Theme" >
             <SwitchButton />
-          </div>
+          </BlockSettings>
 
       </FormStyles>
     </BlockSettings>
   )
 }
+
+/*
+<div className="division">
+<h3 className="titleStyleSettings"> Change color </h3>
+*/

@@ -28,7 +28,6 @@ export default function AuthenticationPopup(){
       setGitHubUid(result.user.providerData[0].uid)
       getUserGitHubData(result.user.providerData[0].uid)
       navigate("/dashboard")
-      
     })
     .catch((error)=>{
       console.log(error);
