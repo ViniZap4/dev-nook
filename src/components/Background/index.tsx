@@ -14,16 +14,23 @@ export default function Background(){
   // create canvas tag element
   const canvasView = document.createElement('canvas')
 
+  
+
   const app = new Application({
     view: canvasView,
     resizeTo: window,
-    backgroundAlpha: 0
+    backgroundAlpha: 0,
+    clearBeforeRender: true,
   });
   
   function hundleBackground(){
+    canvasView.addEventListener('webglcontextlost', () => {
+      location.reload()
+    });
+  
     canvasRef.current?.appendChild(canvasView)
     app.stage.filters = [new KawaseBlurFilter(30, 10, true)];
-
+    
     app.start();
 
     // creating orbs
@@ -50,6 +57,9 @@ export default function Background(){
     }
 
     return () => {
+      canvasView.removeEventListener('canvasView', () => {
+        location.reload()
+      })
       console.log("deleted")
       app.stop()
     };
