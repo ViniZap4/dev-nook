@@ -10,16 +10,11 @@ import { ThemeContext } from "../../../../../../contexts/themeContext";
 export default function StylesSettings(){
   const colorsPallets = [cianoPalette, pinkPalette, orangePalette, bluePalette]
   const {setColors, colors} = useContext(ThemeContext)
-  const [clicks, setClicks] = useState(0)
 
-  function HundleCache(){
-    if(clicks >= 5) setTimeout(()=>{location.reload()},800)
-    setClicks(clicks+1)
-  }
 
   return(
     <BlockSettings title="Appearance">
-      <FormStyles onClick={HundleCache}>
+      <FormStyles>
           <BlockSettings subtitle="Change color">
             <div className="colorsContainer">
               {colorsPallets.map(color => {
