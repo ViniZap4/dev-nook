@@ -1,0 +1,36 @@
+# Production overlay — adds Caddy reverse proxy with automatic HTTPS.
+# Usage: docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+#
+# For Cloudflare: set DOMAIN in .env and point your DNS to this server.
+# Cloudflare proxy (orange cloud) handles CDN/DDoS; Caddy handles origin TLS.
+# For bare VPS: Caddy auto-provisions Let's Encrypt certs.
+
+services:
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_certs:/config
+    depends_on:
+      - web
+      - server
+
+  server:
+    restart: unless-stopped
+
+  web:
+    restart: unless-stopped
+    ports: !reset []
+
+  db:
+    restart: unless-stopped
+    ports: !reset []
+
+volumes:
+  caddy_data:
+  caddy_certs:

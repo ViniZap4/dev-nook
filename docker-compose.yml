@@ -1,0 +1,63 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: devnook
+      POSTGRES_USER: ${DB_USER:-devnook}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-devnook}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-devnook}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  server:
+    build: ./server
+    ports:
+      - "${SERVER_PORT:-8080}:8080"
+    volumes:
+      - repos_data:/repos
+    environment:
+      - DATABASE_URL=postgres://${DB_USER:-devnook}:${DB_PASSWORD:-devnook}@db:5432/devnook?sslmode=disable
+      - DEVNOOK_PORT=8080
+      - DEVNOOK_REPOS_PATH=/repos
+      - DEVNOOK_SECRET=${DEVNOOK_SECRET:-changeme}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ./web-client
+      args:
+        VITE_DEVNOOK_SERVER_URL: ${DEVNOOK_SERVER_URL:-http://localhost:8080}
+    ports:
+      - "${WEB_PORT:-3000}:80"
+    depends_on:
+      - server
+
+  # Caddy reverse proxy — handles TLS, load balancing, and Cloudflare integration.
+  # Uncomment to use. Works on single server, VPS, or behind Cloudflare proxy.
+  #
+  # caddy:
+  #   image: caddy:2-alpine
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./Caddyfile:/etc/caddy/Caddyfile
+  #     - caddy_data:/data
+  #     - caddy_certs:/config
+  #   depends_on:
+  #     - web
+  #     - server
+
+volumes:
+  db_data:
+  repos_data:
+  # caddy_data:
+  # caddy_certs:

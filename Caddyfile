@@ -1,0 +1,23 @@
+# Replace {$DOMAIN} with your domain, or set DOMAIN env var.
+# Works with Cloudflare proxy (orange cloud) or standalone.
+#
+# Single server / VPS:  Caddy auto-provisions Let's Encrypt TLS.
+# Behind Cloudflare:    Set Cloudflare SSL mode to "Full (strict)".
+
+{$DOMAIN:localhost} {
+	# Web client
+	handle {
+		reverse_proxy web:80
+	}
+
+	# API + Git + WebSocket
+	handle /api/* {
+		reverse_proxy server:8080
+	}
+	handle /ws {
+		reverse_proxy server:8080
+	}
+	handle /*.git/* {
+		reverse_proxy server:8080
+	}
+}

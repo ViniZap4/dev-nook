@@ -1,0 +1,9 @@
+[submodule "server"]
+	path = server
+	url = git@github.com:ViniZap4/devnook-server.git
+[submodule "web-client"]
+	path = web-client
+	url = git@github.com:ViniZap4/devnook-web.git
+[submodule "tui-client"]
+	path = tui-client
+	url = git@github.com:ViniZap4/devnook-tui.git
