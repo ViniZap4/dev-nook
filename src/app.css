@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+	--font-title: 2rem;
+	--font-subtitle: 1.25rem;
+	--font-text: 0.938rem;
+
+	--animate-slide-in-blurred-top: slide-in-blurred-top 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+	--animate-scale-in-center: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+	--animate-fade-in: fade-in 0.4s ease both;
+}
+
+@layer base {
+	* {
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+
+	body {
+		margin: 0;
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+			'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+			sans-serif;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+	code {
+		font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+	}
+
+	h1 { font-size: var(--font-title); font-weight: 700; }
+	h2 { font-size: var(--font-subtitle); font-weight: 600; }
+	h3 { font-size: 1rem; font-weight: 600; }
+	p, span { font-size: var(--font-text); }
+	a { text-decoration: none; }
+	button { cursor: pointer; border: none; background: none; }
+	input:focus, textarea:focus, select:focus { outline: none; }
+}
+
+/* Animations */
+@keyframes slide-in-blurred-top {
+	0% {
+		transform: translateY(-40px);
+		opacity: 0;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes scale-in-center {
+	0% {
+		transform: scale(0.95);
+		opacity: 0;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+@keyframes fade-in {
+	0% { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+/* Custom utilities */
+@utility glass {
+	backdrop-filter: blur(24px) saturate(1.4);
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+@utility noise-bg {
+	background-image: linear-gradient(360deg, var(--color-background), #00000027), url('/noise.svg');
+}
+
+@utility noise-bg-strong {
+	background-image: linear-gradient(360deg, var(--color-background, #121212)d9, var(--color-background, #121212)99), url('/noise.svg');
+}
+
+@utility noise-bg-medium {
+	background-image: linear-gradient(360deg, var(--color-background, #121212)99, var(--color-background, #121212)72), url('/noise.svg');
+}
+
+@utility card {
+	@apply rounded-2xl glass noise-bg-medium border border-white/[0.06];
+}
