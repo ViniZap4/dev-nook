@@ -6,7 +6,7 @@ Developer platform — git hosting, shortcuts, dashboard. Monorepo with Go serve
 
 ```bash
 # Clone with submodules
-git clone --recurse-submodules git@github.com:ViniZap4/devnook.git
+git clone --recurse-submodules https://github.com/ViniZap4/dev-nook.git
 cd devnook
 
 # Copy env and start
